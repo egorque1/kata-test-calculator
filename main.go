@@ -35,6 +35,9 @@ func main() {
 			if result1 != "0" && result2 != "0" {
 				toNumber1, toNumber2, _ = convert(result1, result2)
 				result := calculate(operand, toNumber1, toNumber2)
+				if result == 101 {
+					log.Fatal("ошибка: неверный оператор")
+				}
 				if result <= 0 {
 					log.Fatal("ошибка: результат не может быть выведен в римских числах")
 				}
@@ -43,7 +46,11 @@ func main() {
 				log.Fatal("ошибка: неправильный ввод")
 			}
 		} else {
-			fmt.Println(calculate(operand, toNumber1, toNumber2))
+			result := calculate(operand, toNumber1, toNumber2)
+			if result == 101 {
+				log.Fatal("ошибка: неверный оператор")
+			}
+			fmt.Println(result)
 		}
 	}
 }
